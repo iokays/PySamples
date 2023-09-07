@@ -1,3 +1,4 @@
 .idea
 venv
 worker
+.DS_Store
