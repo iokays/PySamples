@@ -46,7 +46,7 @@ with open('data.json', 'r') as f:
     data = json.load(f).get('words')
     for word in data:
         print(word)
-        download_mp3(word.get('word'))
+        download_mp3(word.get('word').replace(' ', '-'))
         # time.sleep(1)
 
 
