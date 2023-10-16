@@ -5,6 +5,7 @@ import os.path
 import requests
 import requests_cache
 import time
+import json
 from bs4 import BeautifulSoup
 
 def download_mp3(word: str):
@@ -33,12 +34,20 @@ def download_mp3(word: str):
 
 
 # 读取longman_3000.txt文件
-with open('longman_3000.txt', 'r') as f:
-    for line in f.readlines():
-        word = line.strip()
+# with open('longman_3000.txt', 'r') as f:
+#     for line in f.readlines():
+#         word = line.strip()
+#         print(word)
+#         download_mp3(word)
+#         time.sleep(1)
+
+# 读取data.json文件
+with open('data.json', 'r') as f:
+    data = json.load(f).get('words')
+    for word in data:
         print(word)
-        download_mp3(word)
-        time.sleep(1)
+        download_mp3(word.get('word'))
+        # time.sleep(1)
 
 
 
