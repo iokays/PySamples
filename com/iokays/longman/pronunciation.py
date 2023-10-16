@@ -16,6 +16,12 @@ def download_mp3(word: str):
 
     html = requests.get(url + word, headers=header)
 
+    #保存内容
+    html_file_url = 'html/' + word + '.html'
+    with open(html_file_url, 'wb') as f:
+        f.write(html.content)
+        f.close()
+
     soup = BeautifulSoup(html.text, 'lxml')
 
     span = soup.find('span', class_='ldoceEntry Entry')
@@ -23,7 +29,7 @@ def download_mp3(word: str):
     mp3_url = span.find('span', class_='speaker brefile fas fa-volume-up hideOnAmp').get('data-src-mp3')
     print(mp3_url)
 
-    mp3_file_url = 'mp3/' + word + '.mp3'
+    mp3_file_url = 'html/' + word + '.mp3'
 
     if not os.path.exists(mp3_file_url):
         mp3 = requests.get(mp3_url, headers=header)

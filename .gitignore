@@ -2,3 +2,5 @@
 venv
 worker
 .DS_Store
+/com/iokays/longman/html/
+/com/iokays/longman/cache/
